@@ -7,21 +7,21 @@ description: Basic functions and Usage of PythonAPI in CoppeliaSim
 -- [Saad Hashmi](https://github.com/hashmis79)
 * We can do many simulation tasks in CoppeliaSim, but the biggest turndown is that we will have to learn a whole new language called Lua. To overcome this CoppeliaSim provides us with an API with can connect CoppeliaSim to many languages including Python, C, C++. In this blog, we will be focusing on Setting up the Python API and some of its basic functions.
 
-We will be covering the basic functions of Python API and their use in simulation</br>
-* [Setting Up the Files](#setting-up-the-files)</br>
-* [Establishing Communication with V-Rep](#establishing-communication)</br>
-* [Retrieving Object Handles in python](#retrieving-object-handles-in-python)</br>
-* [Setting Actuator Velocities](#setting-actuator-velocities)</br>
-* [Retrieving Image data from Vrep to python](#retrieving-image-data)</br>
+We will be covering the basic functions of Python API and their use in simulation </br>
+* [Setting Up the Files](#setting-up-the-files) </br>
+* [Establishing Communication with V-Rep](#establishing-communication) </br>
+* [Retrieving Object Handles in python](#retrieving-object-handles-in-python) </br>
+* [Setting Actuator Velocities](#setting-actuator-velocities) </br>
+* [Retrieving Image data from Vrep to python](#retrieving-image-data) </br>
 * [Putting it all together](#putting-it-all-together)
 
  
 ## Setting Up the Files
 * For Setting up the API, we should add the necessary files to our working directory that are needed for the API which can be found in the CoppeliaSim installation Folder
 
-1) Navigate to `CoppeliaRobotics\CoppeliaSimEdu\programming\remoteApiBindings\python\python` and copy all the .py files into the working directory</br>
-2) Navigate to `CoppeliaRobotics\CoppeliaSimEdu\programming\remoteApiBindings\lib\lib`</br>
-  Depending on the System you are on, you can select the folder (Windows, Ubuntu 16/18, MacOS)</br>
+1) Navigate to `CoppeliaRobotics\CoppeliaSimEdu\programming\remoteApiBindings\python\python` and copy all the .py files into the working directory </br>
+2) Navigate to `CoppeliaRobotics\CoppeliaSimEdu\programming\remoteApiBindings\lib\lib` </br>
+  Depending on the System you are on, you can select the folder (Windows, Ubuntu 16/18, MacOS) </br>
   copy the .dll, .so, or the .dylib file respectively to your working directory.
  
 3) The next thing we want to do is that we have to create a threaded script in any component of the scene where you want to implement API.
@@ -38,8 +38,8 @@ simRemoteApi.start(19990)
 
 Now you are all set for using the PythonAPI in CoppeliaSim.
 ## Establishing Communication
-* For Establishing Communication we need to follow the following steps :</br>
-1) import the `sim` library in the code</br>
+* For Establishing Communication we need to follow the following steps : </br>
+1) import the `sim` library in the code </br>
 2) Add the below statements to the code
 
 ```python
@@ -50,6 +50,7 @@ clientID = sim.simxStart('127.0.0.1',19990,True,True,5000,5)
 **Note: The port being used in the statement should match the port number specified while setting up.**
 
 * For Testing the establishment of communication you have to run the following code after starting the simulation in CoppeliaSim :
+
 ```python
 import sim
 import sys
@@ -64,7 +65,9 @@ else:
     print("Connection not successful")
     sys.exit("Could not connect")
 ```
+
 **Note: You have to run the Simulation before you run the Code or else the Connection would not be established**
+
 <p align="center">
   <img src="/assets/posts/using-python-api-in-coppeliasim/PythonAPI_StartAPI.gif" height ="512"/>
 </p>
@@ -216,7 +219,7 @@ sim.simxFinish(clientID)
 * You can find the rest of the equivalent functions from the [PythonAPI Functions list](https://www.coppeliarobotics.com/helpFiles/en/remoteApiFunctionsPython.htm). You just have to search the Lua function's name and you will find the Python equivalent function and its description. 
 
 ## References Used
-* [A video tutorial via a small project by Nikolai](https://youtu.be/SQont-mTnfM)</br>
-* [The official API documentation and Functions List provided by CoppeliaSim](https://www.coppeliarobotics.com/helpFiles/en/remoteApiFunctionsPython.htm)</br>
+* [A video tutorial via a small project by Nikolai](https://youtu.be/SQont-mTnfM)
+* [The official API documentation and Functions List provided by CoppeliaSim](https://www.coppeliarobotics.com/helpFiles/en/remoteApiFunctionsPython.htm)
 * Learn more about streaming modes [here](https://www.coppeliarobotics.com/helpFiles/en/remoteApiConstants.htm#operationModes)
 * For learning CoppeliaSim from scratch, go [here](https://www.youtube.com/watch?v=PwGY8PxQOXY&list=PLjzuoBhdtaXOoqkJUqhYQletLLnJP8vjZ).
